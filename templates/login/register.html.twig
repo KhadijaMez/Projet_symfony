@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+<div class="contact-header" style="background-image: url({{asset('images/fond.jpg')}});">
+    <h1>Inscription</h1>
+    <p>CONNECTEZ VOUS> INSCRIPTION</p>
+</div>
+<div class="form-container">
+    <div class="content-wrapper">
+        <!-- Colonne gauche : Logo et description -->
+        <div class="left-section">
+            <div class="logo">
+                <img src="{{asset('images/logoedutine.png')}}" alt="EduTine Logo">
+            </div>
+            <p class="description">
+                <strong>Avec notre programme, profitez de :</strong>
+                <ul>
+                    <li>Un accès facilité à vos services</li>
+                    <li>Des promotions exclusives</li>
+                    <li>Une expérience personnalisée</li>
+                </ul>
+            </p>
+        </div>
+
+        <!-- Colonne droite : Formulaire -->
+        <div class="form-card">
+            <h2>Inscription</h2>
+            <p class="subtitle">L'Aventure commence ici 🚀</p>
+            <form action="/register" method="POST">
+                <div class="form-group">
+                    <label>
+                        <input type="radio" name="type" value="etudiant" id="etudiantRadio" required> Étudiant
+                    </label>
+                    <label>
+                        <input type="radio" name="type" value="technicien" id="technicienRadio" required> Technicien
+                    </label>
+                </div>
+
+                <div id="sectionEtudiant" class="section">
+                    <h3>Informations Étudiant</h3>
+                    <div class="form-group">
+                        <label for="numeroEtudiant">Numéro Étudiant :</label>
+                        <input type="text" id="numeroEtudiant" name="numeroEtudiant" placeholder="Entrer le numéro">
+                    </div>
+                    <div class="form-group">
+                        <label for="departement">Département :</label>
+                        <input type="text" id="departement" name="departement" placeholder="Entrer le département">
+                    </div>
+                </div>
+
+                <div id="sectionTechnicien" class="section" style="display: none;">
+                    <h3>Informations Technicien</h3>
+                    <div class="form-group">
+                        <label for="specialite">Spécialité :</label>
+                        <input type="text" id="specialite" name="specialite" placeholder="Entrer la spécialité">
+                    </div>
+                    <div class="form-group">
+                        <label for="anneeExperience">Années d'expérience :</label>
+                        <input type="number" id="anneeExperience" name="anneeExperience" placeholder="Entrer les années d'expérience">
+                    </div>
+                </div>
+
+                <h3>Informations Générales</h3>
+                <div class="form-group">
+                    <label for="telephone">Téléphone :</label>
+                    <input type="text" id="telephone" name="telephone" placeholder="Entrer votre téléphone" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email :</label>
+                    <input type="email" id="email" name="email" placeholder="Entrer votre email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de Passe :</label>
+                    <input type="password" id="password" name="password" placeholder="Entrer un mot de passe" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirmer le Mot de Passe :</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirmer le mot de passe" required>
+                </div>
+
+                <button type="submit" class="btn-primary">S'inscrire</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const etudiantRadio = document.getElementById("etudiantRadio");
+    const technicienRadio = document.getElementById("technicienRadio");
+    const sectionEtudiant = document.getElementById("sectionEtudiant");
+    const sectionTechnicien = document.getElementById("sectionTechnicien");
+
+    etudiantRadio.addEventListener("change", () => {
+        if (etudiantRadio.checked) {
+            sectionEtudiant.style.display = "block";
+            sectionTechnicien.style.display = "none";
+        }
+    });
+
+    technicienRadio.addEventListener("change", () => {
+        if (technicienRadio.checked) {
+            sectionTechnicien.style.display = "block";
+            sectionEtudiant.style.display = "none";
+        }
+    });
+});
+
+</script>
+{% endblock %}
+
+
+

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+<div class="contact-header" style="background-image: url({{asset('images/fond.jpg')}});">
+    <h1>CONNEXION</h1>
+    <p>HOME > CONNECTEZ VOUS</p>
+</div>
+<div class="login-page">
+    <div class="login-box">
+        <div class="login-left">
+            <h1>Connectez-vous</h1>
+            <form action="{{ path('app_login') }}" method="POST">
+                <label for="email">Adresse email :</label>
+                <input type="email" id="email" name="_username" placeholder="Votre email" required>
+
+                <label for="password">Mot de passe :</label>
+                <input type="password" id="password" name="_password" placeholder="Votre mot de passe" required>
+
+                <a href="{{ path('forgot_password') }}" class="forgot-password">Mot de passe oublié ?</a>
+                <button type="submit" class="btn-primary">Se connecter</button>
+            </form>
+            <p>Vous n'avez pas encore de compte ? <a href="{{ path('register') }}">Créer maintenant</a></p>
+        </div>
+        <div class="login-right">
+            <img src="{{ asset('images/man.png') }}" alt="User Icon">
+            <p><strong>Avec notre programme, profitez de :</strong></p>
+            <ul>
+                <li>Un accès facilité à vos services</li>
+                <li>Des promotions exclusives</li>
+                <li>Une expérience personnalisée</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
